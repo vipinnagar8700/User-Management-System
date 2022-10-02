@@ -1,0 +1,31 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/admin/listRole"><i class="fa fa-home">Home</i></a></li>
+      <li class="breadcrumb-item active" aria-current="page"><i class="fa fa-edit">Edit Role</i></li>
+    </ol>
+  </nav>
+<div class="container jumbotron" >
+    <form action="/admin/updateRole" method="POST">
+        <div class="card">
+            <h2 style="text-align: center; padding-top: 2%;"> Edit Role</h2>
+            <div class="form-group">
+                <label for="validationServer02">Role Name</label>
+                <input name="id" value="<%= data[0].ID %>" type="hidden" />
+                <input type="text" class="form-control" value="<%= data[0].RoleName %>" name="RoleName" id="updateName" aria-describedby="Help" 
+                    placeholder="Enter New Role Name" required> 
+            </div>
+            <div class="form-group">
+                <label for="inputState">Status</label>
+                <select id="inputState" name="Status" class="form-control">
+                    <option hidden disabled>Choose status</option>
+                    <option value="active" <% if( data[0].Status == 'active' ){ %> selected <% } %>  >Active</option>
+                    <option value="inactive" <% if( data[0].Status == 'inactive' ){ %> selected <% } %>  >Inactive</option>
+                </select>
+                <br>
+                <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure to Update Role?')" >Update</button>
+                
+                
+            </div>
+        </div>
+    </form>
+</div>

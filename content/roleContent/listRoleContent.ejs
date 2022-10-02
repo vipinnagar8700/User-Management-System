@@ -1,0 +1,128 @@
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin/listRole"><i class="fa fa-home">Home</i></a></li>
+    </ol>
+  </nav>
+<section>
+    <div class="table table-bordered" style="padding:2% 2% 2% 2%;">
+
+        <div class="row">
+            <div class="col">
+                <h3> ADD ROLE</h3>
+            </div>
+            <div class="col-1">
+                <a href="/admin/addRole" class="btn btn-primary" id="basic-addon2">ADD</a>
+            </div>
+        </div>
+
+        <br>
+        <form>
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control"  id="myInput1" onkeyup="mysearchbar()"
+                        placeholder="Search ID ....">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control"  placeholder="Search RoleName...">
+                </div>
+            </div>
+        </form>
+        <br>
+        <div class="wrapper_all">
+            <table id="myTable1" class="table table-striped table-bordered table-sm" style="text-align: center;" >
+
+                <thead class="flip-content">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">RoleName</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">UpdatedAt</th>
+                        <th scope="col">CreatedAt</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (var i=0; i < data.length; i++) { %>
+                        <tr>
+                            <td>
+                                <%= data[i].ID %>
+                            </td>
+                            <td>
+                                <%= data[i].RoleName %>
+                            </td>
+                            <td>
+                                <%=data[i].Status%>
+                            </td>
+                            <td>
+                                <% var date=new Date(data[i].UpdateAt); %>
+                                    <%= date.toLocaleString(); %>
+                            </td>
+                            <td>
+                                <% var date=new Date(data[i].CreateAt); %>
+                                    <%= date.toLocaleString(); %>
+                            </td>
+                            <td>
+                                <%= data[i].Action %>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <ul class="list-inline m-0">
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <li class="list-inline-item">
+                                                            <a class="btn btn-success btn-sm rounded-0"
+                                                                href="<%= url('admin.editRole', {id: data[i].ID }) %>"><i
+                                                                    class="fa fa-edit"></i></a>
+                                                        </li>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <li class="list-inline-item">
+                                                            <a class="btn btn-danger btn-sm rounded-0"
+                                                            href="<%= url('admin.deleteRole', {id: data[i].ID }) %>" onclick="return confirm('Are you sure to delete Role?')" id=""><i
+                                                                    class="fa fa-trash"></i></a>
+                                                        </li>
+                                                    </div>
+                                                </div>
+                                            </ul>
+                                        </div>
+                                    </div>
+                            </td>
+                        </tr>
+                        <% } %>
+                </tbody>
+            </table>
+        </div>
+        <nav aria-label="Page navigation example" >
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+        </nav>
+
+    </div>
+    
+</section>
+<script>
+    function mysearchbar() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput1");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable1");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }       
+        }
+      }
+      </script>

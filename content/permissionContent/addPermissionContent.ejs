@@ -1,0 +1,30 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin/listPermission"><i class="fa fa-home">Home</i></a></li>
+        <li class="breadcrumb-item active" aria-current="page"><i class="fa fa-user">Add Permission</i></li>
+    </ol>
+</nav>
+<div class="container jumbotron">
+    <form action="/admin/insertPermission" method="POST">
+        <div class="card">
+            <h2 style="text-align: center; padding-top: 2%;"> Add Permission</h2>
+            <div class="form-group">
+                <label for="validationServer02">Role Name</label>
+                <input type="name" class="form-control" name="permission" id="validationServer02" aria-describedby="Help"
+                    placeholder="Enter New Role Name" required>
+            </div>
+            <div class="form-group">
+                <label for="inputState">Status</label>
+                <select id="inputState" name="permission_Status" class="form-control">
+                    <option selected hidden disabled>Choose status</option>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+                <br>
+                
+                <button type="submit"  class="btn btn-primary" >Submit</button>
+                
+            </div>
+        </div>
+    </form>
+</div>

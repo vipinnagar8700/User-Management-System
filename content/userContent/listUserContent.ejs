@@ -1,0 +1,159 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/listUser"><i class="fa fa-home">Home</i></a></li>
+    </ol>
+</nav>
+<div class="datatable">
+    <div class="table table-bordered">
+        <div class="row">
+            <div class="col">
+                <h3> User's List</h3>
+            </div>
+            <div class="col-1">
+                <a href="/addUser" class="btn btn-primary" id="basic-addon2">Add</a>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-2 col-md-1">
+                <div class="dataTables_length" id="example_length">Show
+                </div>
+            </div>
+            <div class="col-5 col-md-1"> <label><select name="example_length" aria-controls="example"
+                        class="custom-select custom-select-sm form-control form-control-sm">
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select></label>
+            </div>
+            <div class="col-3 col-md-8">enteries
+            </div>
+            <div class="col-2">
+                <div id="example_filter" class="dataTables_filter"><label>Search:<input type="search"
+                            class="form-control form-control-sm" placeholder="" aria-controls="example"></label>
+                </div>
+            </div>
+        </div>
+        <table id="example" class="table table-striped  dataTable" aria-describedby="example_info" cellspacing="0"
+            width="100%" style="text-align: center;">
+            <thead>
+                <tr>
+                    <th class="sorting sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1"
+                        aria-label="ID: activate to sort column descending" aria-sort="ascending">ID</th>
+                    <th class=" sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"
+                        aria-label="userName: activate to sort column ascending">userName</th>
+                    <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"
+                        aria-label="Email: activate to sort column ascending">Email</th>
+                    <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"
+                        aria-label="User Role: activate to sort column ascending">User Role</th>
+                    <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"
+                        aria-label="Status: activate to sort column ascending">Status</th>
+                    <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"
+                        aria-label="Updated_At: activate to sort column ascending">Updated_At</th>
+                    <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"
+                        aria-label="Created_At: activate to sort column ascending">Created_At</th>
+                    <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"
+                        aria-label="Action: activate to sort column ascending">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (var i=0; i < data.length; i++) { %>
+                    <tr class="odd">
+                        <td class="sorting_1">
+                            <%= data[i].ID %>
+                        </td>
+                        <td class="sorting_1">
+                            <%= data[i].userName %>
+                        </td>
+                        <td class="sorting_1">
+                            <%= data[i].Email %>
+                        </td>
+                        <td class="sorting_1">
+                            <%= data[i].RoleName %>
+                        </td>
+                        <td class="sorting_1">
+                            <%=data[i].Status%>
+                        </td>
+                        <td class="sorting_1">
+                            <% var date=new Date(data[i].updated_At); %>
+                                <%= date.toLocaleString(); %>
+                        </td>
+                        <td class="sorting_1">
+                            <% var date=new Date(data[i].created_At); %>
+                                <%= date.toLocaleString(); %>
+                        </td>
+                        <td class="sorting_1">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <ul class="list-inline m-0">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <li class="list-inline-item">
+                                                    <a class="btn btn-success btn-sm rounded-0"
+                                                        href="<%= url('admin.editUser', {id: data[i].ID }) %>"><i
+                                                            class="fa fa-edit"></i></a>
+                                                </li>
+                                            </div>
+
+                                            <div class="col-2">
+                                                <li class="list-inline-item">
+                                                    <a class="btn btn-danger btn-sm rounded-0"
+                                                        href="<%= url('admin.deleteUser', {id: data[i].ID }) %>"
+                                                        onclick="return confirm('Are you sure to delete Role?')"
+                                                        id=""><i class="fa fa-trash"></i></a>
+                                                </li>
+                                            </div>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <% } %>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th rowspan="1" colspan="1">ID</th>
+                    <th rowspan="1" colspan="1">userName</th>
+                    <th rowspan="1" colspan="1">Email</th>
+                    <th rowspan="1" colspan="1">User Role</th>
+                    <th rowspan="1" colspan="1">Status</th>
+                    <th rowspan="1" colspan="1">Updated_At</th>
+                    <th rowspan="1" colspan="1">Created_At</th>
+                    <th rowspan="1" colspan="1">Action</th>
+
+                </tr>
+            </tfoot>
+        </table>
+        <div class="row">
+            <div class="col">
+                <div class="dataTables_info" id="example_info" role="status" aria-live="polite">Showing 1 to 10 of
+                    57 entries</div>
+            </div>
+            <div class="col-4">
+                <div class="dataTables_paginate paging_simple_numbers" id="example_paginate">
+                    <ul class="pagination">
+                        <li class="paginate_button page-item previous disabled" id="example_previous"><a href="#"
+                                aria-controls="example" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+                        </li>
+                        <li class="paginate_button page-item active"><a href="#" aria-controls="example" data-dt-idx="1"
+                                tabindex="0" class="page-link">1</a></li>
+                        <li class="paginate_button page-item "><a href="#" aria-controls="example" data-dt-idx="2"
+                                tabindex="0" class="page-link">2</a></li>
+                        <li class="paginate_button page-item "><a href="#" aria-controls="example" data-dt-idx="3"
+                                tabindex="0" class="page-link">3</a></li>
+                        <li class="paginate_button page-item "><a href="#" aria-controls="example" data-dt-idx="4"
+                                tabindex="0" class="page-link">4</a></li>
+                        <li class="paginate_button page-item "><a href="#" aria-controls="example" data-dt-idx="5"
+                                tabindex="0" class="page-link">5</a></li>
+                        <li class="paginate_button page-item "><a href="#" aria-controls="example" data-dt-idx="6"
+                                tabindex="0" class="page-link">6</a></li>
+                        <li class="paginate_button page-item next" id="example_next"><a href="#" aria-controls="example"
+                                data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

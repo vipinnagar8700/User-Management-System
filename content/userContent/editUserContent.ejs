@@ -1,0 +1,60 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/listUser"><i class="fa fa-home">Home</i></a></li>
+        <li class="breadcrumb-item active" aria-current="page"><i class="fa fa-edit">Edit Role</i></li>
+    </ol>
+</nav>
+ <div class="container jumbotron">
+    <form action="/admin/updateUser" method="POST">
+        <div class="card">
+            <h2 style="text-align: center; padding-top: 2%;"> Edit User</h2>
+            <div class="form-group">
+                <label for="validationServer02">User Name</label>
+                <input name="id" value="<%= userData[0].ID %>" type="hidden" />
+                <input type="text" class="form-control" value="<%= userData[0].userName %>" name="userName" id="updateName"
+                    aria-describedby="Help" placeholder="UserName" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1" class="form-label ">Email address</label>
+                <input type="email" class="form-control"value="<%= userData[0].Email %>" name="Email" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="form6Example2">User Role</label>
+                <select id="role_id" name="role_id" class="form-control">
+                    <option selected hidden disabled>Choose User Role</option>
+                    <% for (var i=0; i < roleData.length; i++) { %>
+                    <option value="<%= roleData[i].ID %>"  <% if( roleData[i].ID == userData[0].role_id ){ %> selected <% } %> ><%= roleData[i].RoleName %></option>
+                    <% } %>
+                </select>
+                <br>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="inputState">Status</label>
+                        <select id="inputState" name="Status" class="form-control" required>
+                            <option hidden disabled>Choose status</option>
+                            <option value="active" <% if( roleData[0].Status == 'active' ){ %> selected <% } %> >Active</option>
+                            <option value="inactive" <% if( roleData[0].Status == 'inactive' ){ %> selected <% } %> >Inactive</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password"  class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+                    </div>
+                </div>
+
+            </div>
+            
+            <br>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end col-12">
+                <button type="submit" class="btn btn-primary sm"
+                    onclick="return confirm('Are you sure to Update Role?')">Update</button>
+            </div>
+            <br>
+        </div>
+    </form>
+</div>

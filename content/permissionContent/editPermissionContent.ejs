@@ -1,0 +1,34 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/admin/listPermission"><i class="fa fa-home">Home</i></a></li>
+      <li class="breadcrumb-item active" aria-current="page"><i class="fa fa-edit">Edit Permissions</i></li>
+    </ol>
+  </nav>
+ 
+<div class="container jumbotron" >
+    <form action="/admin/updatePermission" method="POST">
+        <div class="card">
+            <h2 style="text-align: center; padding-top: 2%;"> Edit Role</h2>
+            <div class="form-group">
+                <label for="validationServer02">Role Name</label>
+                <input name="id_Permission" value="<%= data[0].id_Permission %>" type="hidden" />
+                <input type="text" class="form-control" value="<%= data[0].permission %>" name="permission" id="updateName" aria-describedby="Help" 
+                    placeholder=" Select Permissions" required> 
+            </div>
+            <div class="form-group">
+                <label for="inputState">Status</label>
+                <select id="inputState" name="permission_Status" class="form-control">
+                    <option hidden disabled>Choose status</option>
+                    <option value="active" <% if( data[0].Status == 'active' ){ %> selected <% } %>  >Active</option>
+                    <option value="inactive" <% if( data[0].Status == 'inactive' ){ %> selected <% } %>  >Inactive</option>
+                </select>
+                <br>
+                <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure to Update Role?')" >Update</button>
+                
+                
+            </div>
+        </div>
+    </form>
+</div>
+
+  
