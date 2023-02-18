@@ -8,11 +8,11 @@
 <div class="container jumbotron" >
     <form action="/admin/updatePermission" method="POST">
         <div class="card">
-            <h2 style="text-align: center; padding-top: 2%;"> Edit Role</h2>
+            <h2 style="text-align: center; padding-top: 2%;"> Edit Permission</h2>
             <div class="form-group">
-                <label for="validationServer02">Role Name</label>
+                <label for="validationServer02">Permission</label>
                 <input name="id_Permission" value="<%= data[0].id_Permission %>" type="hidden" />
-                <input type="text" class="form-control" value="<%= data[0].permission %>" name="permission" id="updateName" aria-describedby="Help" 
+                <input type="text" class="form-control" value="<%= data[0].permission %>" name="permissions" id="updateName" aria-describedby="Help" 
                     placeholder=" Select Permissions" required> 
             </div>
             <div class="form-group">

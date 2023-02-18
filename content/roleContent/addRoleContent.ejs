@@ -14,47 +14,24 @@
                     placeholder="Enter New Role Name" required>
             </div>
             <div class="form-group">
+                <label class="form-label" for="form6Example2">User Permission</label>
+                <select  id="permission_ID" multiple multiselect-search="true" multiselect-select-all="true" multiselect-max-items="10" name="permission_ID" class="form-control" required>
+                    <% for (var i=0; i < data.length; i++) { %>
+                    <option value="<%= data[i].id_Permission %>" ><%= data[i].permissions %></option>
+                    <% } %>
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="inputState">Status</label>
                 <select id="inputState" name="Status" class="form-control">
                     <option selected hidden disabled>Choose status</option>
                     <option value="active">Active</option>
                     <option value="inactive">Inactive</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="validationServer02">Permissions</label>
-                <select id="multiple-checkboxes" multiple="multiple" name="permission" class="form-control">
-                    <option selected hidden disabled>Select Permissions</option>
-                    <option value="Deshboard">Deshboard</option>
-                    <option value="Features">Features</option>
-                    <option value="Blog">Blog</option>
-                    <option value="Category">Category</option>
-                    <option value="Pages">Pages</option>
-                    <option value="Role">Role</option>
-                    <option value="User">User</option>
-                </select>
-
-
-
-            </div>
-            <!-- <div class="form-group">
-                <label for="validationServer02">Permissions</label>
-                <input type="name" class="form-control" name="permission" id="validationServer02" aria-describedby="Help"
-                    placeholder="Enter Permissions" required>
-            </div> -->
-            <div class="form-group">
-                <label for="inputState">Status</label>
-                <select id="inputState" name="permission_Status" class="form-control">
-                    <option selected hidden disabled>Choose status</option>
-                    <option value="active">Active</option>
-                    <option value="inactive">Inactive</option>
-                </select>
+                </select>   
                 <br>
 
                 <button type="submit" onclick="addRole()" class="btn btn-primary">Submit</button>
-
             </div>
-
         </div>
     </form>
 </div>
@@ -62,23 +39,4 @@
     function addRole() {
         alert("I am an alert box!");
     }
-
 </script>
-<script>
-    $(function () {
-    $('.selectpicker').selectpicker();
-});
-</script>
-<div class="row">
-    <div class="col-lg-6 mx-auto">
-        <label class="text-white mb-3 lead">Where do you live?</label>
-        <!-- Multiselect dropdown -->
-        <select multiple data-style="bg-white rounded-pill px-4 py-3 shadow-sm " class="selectpicker w-100">
-            <option>United Kingdom</option>
-            <option>United States</option>
-            <option>France</option>
-            <option>Germany</option>
-            <option>Italy</option>
-        </select><!-- End -->
-    </div>
-</div>
